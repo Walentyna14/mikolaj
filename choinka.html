@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Kamila Kosmowska">
+		<title> My website </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+		
+		<table>
+			<tr>
+				<th>
+				<script>
+			var n=18;
+			var k=1;
+			for (var i=0;i<n; i++)
+			{
+				
+				for (var j=0;j<k; j++)
+				{
+					if(i<n-1)
+					{
+						var rand1 = Math.floor((Math.random() * k) + 1);
+						var rand2 = Math.floor((Math.random() * k-2) + 1);
+						if(j==i && i!=0)
+						document.write("<i style=\"color: brown;\">*</i>");
+						else if (i==0)
+							document.write("<i class=\" star \">*</i>");
+						else if (i==rand1)
+							document.write("<i class=\"col1\">*</i>");
+						else if (i==rand2)
+							document.write("<i class=\"col2\">*</i>");
+						else
+							document.write("<i >*</i>");
+					}
+					else
+					{
+						if(j!=i)
+							document.write("");
+						else{
+							document.write("<i style=\"color: brown;\">*</i>");
+						}	
+					}
+				}
+			document.write("<br/>");
+			k+=2;
+			}
+			
+			var myVar = setInterval(function(){
+				var kol1 = document.getElementsByClassName("col1").style.color;
+				if(kol1 == "rgb(139, 139, 213)"){
+					document.getElementsByClassName("col2").style.color = "rgb(139, 139, 213)";
+					document.getElementsByClassName("col1").style.color = "rgb(211, 29, 29)";
+				}else{
+					document.getElementsByClassName("col1").style.color = "rgb(139, 139, 213)";
+					document.getElementsByClassName("col2").style.color = "rgb(211, 29, 29)";
+				}
+			}, 3000);
+		</script>
+				</th>
+				<th>
+					<div id="miko"></div>
+				</th>
+			</tr>
+		</table>
+		<button id="bstop">Stop</button>
+		<button id="bplay">Play</button>
+		<input type="range" id="vol" min="0" max="10" value="10">
+		<script>
+			var snd = new Audio("gwiazdka.mp3");
+			snd.loop = true;
+			snd.autoplay = true;
+			
+			
+
+			document.getElementById("bstop").onclick = function () { snd.pause(); };
+			
+			document.getElementById("vol").onchange = function () {
+				var vol = document.getElementById("vol").value;
+				vol = vol/10;
+				snd.volume = vol ; };
+
+			document.getElementById("bplay").onclick = function () { snd.play(); };
+			
+			 var pojemnik = document.getElementById("miko").innerHTML="<img src=\"mikolaj.gif\">";
+		</script>
+	</body>
+</html>
